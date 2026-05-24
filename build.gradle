@@ -52,3 +52,6 @@ publishing {
         }
     }
 }
+tasks.register("run") {
+    dependsOn("runClient")
+}
