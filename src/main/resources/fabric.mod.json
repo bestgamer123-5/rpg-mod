@@ -3,7 +3,7 @@
   "id": "rpgminecraft",
   "version": "${version}",
   "name": "RPG Minecraft",
-  "description": "Adds RPG-style progression with a custom sword that grants bonus XP.",
+  "description": "Adds a shootable RPG launcher with impact explosions.",
   "authors": [
     "Codex"
   ],
@@ -13,6 +13,9 @@
   "entrypoints": {
     "main": [
       "com.example.rpgminecraft.RpgMinecraftMod"
+    ],
+    "client": [
+      "com.example.rpgminecraft.RpgMinecraftClientMod"
     ]
   },
   "depends": {
