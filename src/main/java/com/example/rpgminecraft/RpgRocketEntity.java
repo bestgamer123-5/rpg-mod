@@ -20,6 +20,7 @@ public class RpgRocketEntity extends ThrownItemEntity {
         HUNTER(1.5f, 2.1f),
         MOB_CANNON(0.0f, 0.0f),
         ANYTHING_CANNON(0.0f, 0.0f);
+        HUNTER(1.5f, 2.1f);
 
         public final float explosionPower;
         public final float velocity;
@@ -81,6 +82,8 @@ public class RpgRocketEntity extends ThrownItemEntity {
     @Override
     protected double getGravity() {
         return 0.0;
+    protected float getGravity() {
+        return 0.0f;
     }
 
     @Override

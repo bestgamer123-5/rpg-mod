@@ -14,6 +14,11 @@ import net.minecraft.nbt.NbtOps;
 import net.minecraft.registry.Registries;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
+import net.minecraft.entity.EquipmentSlot;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.stat.Stats;
 import net.minecraft.util.Hand;
@@ -24,6 +29,7 @@ import java.util.List;
 
 public class RpgLauncherItem extends Item {
     private static final String LOADED_ITEM_KEY = "LoadedItem";
+public class RpgLauncherItem extends Item {
     private final RpgRocketEntity.RocketMode rocketMode;
 
     public RpgLauncherItem(Settings settings, RpgRocketEntity.RocketMode rocketMode) {
@@ -52,6 +58,7 @@ public class RpgLauncherItem extends Item {
 
             return TypedActionResult.fail(launcherStack);
         }
+        ItemStack itemStack = user.getStackInHand(hand);
 
         if (!world.isClient) {
             RpgRocketEntity rocket = new RpgRocketEntity(world, user, rocketMode);
@@ -128,5 +135,21 @@ public class RpgLauncherItem extends Item {
     private NbtCompound getLauncherData(ItemStack stack) {
         NbtComponent customData = stack.get(DataComponentTypes.CUSTOM_DATA);
         return customData == null ? null : customData.copyNbt();
+        world.playSound(
+                null,
+                user.getX(),
+                user.getY(),
+                user.getZ(),
+                SoundEvents.ENTITY_FIREWORK_ROCKET_LAUNCH,
+                SoundCategory.PLAYERS,
+                0.8f,
+                0.8f + world.random.nextFloat() * 0.4f
+        );
+
+        user.incrementStat(Stats.USED.getOrCreateStat(this));
+        EquipmentSlot slot = hand == Hand.MAIN_HAND ? EquipmentSlot.MAINHAND : EquipmentSlot.OFFHAND;
+        itemStack.damage(1, user, entity -> entity.sendEquipmentBreakStatus(slot));
+
+        return TypedActionResult.success(itemStack, world.isClient());
     }
 }

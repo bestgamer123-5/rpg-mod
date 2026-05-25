@@ -64,5 +64,6 @@ public class RpgMinecraftMod implements ModInitializer {
                 default -> null;
             };
         }
+        LOGGER.info("RPG Minecraft loaded!");
     }
 }
