@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " BB",
+    " SR",
+    "S  "
+  ],
+  "key": {
+    "B": {"item": "minecraft:bone"},
+    "R": {"item": "rpgminecraft:rpg_launcher"},
+    "S": {"item": "minecraft:stick"}
+  },
+  "result": {
+    "item": "rpgminecraft:hunter_launcher"
+  }
+}

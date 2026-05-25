@@ -3,7 +3,7 @@
   "id": "rpgminecraft",
   "version": "${version}",
   "name": "RPG Minecraft",
-  "description": "Adds RPG-style progression with a custom sword that grants bonus XP.",
+  "description": "Adds a shootable RPG launcher with impact explosions.",
   "authors": [
     "Codex"
   ],
@@ -13,11 +13,14 @@
   "entrypoints": {
     "main": [
       "com.example.rpgminecraft.RpgMinecraftMod"
+    ],
+    "client": [
+      "com.example.rpgminecraft.RpgMinecraftClientMod"
     ]
   },
   "depends": {
-    "fabricloader": ">=0.15.11",
-    "minecraft": "~1.20.4",
+    "fabricloader": ">=0.16.10",
+    "minecraft": "~1.21.1",
     "java": ">=21",
     "fabric-api": "*"
   }
