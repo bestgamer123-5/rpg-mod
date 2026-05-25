@@ -17,6 +17,9 @@ public class RpgRocketEntity extends ThrownItemEntity {
     public enum RocketMode {
         STANDARD(2.5f, 1.7f),
         NUKE(8.0f, 1.2f),
+        HUNTER(1.5f, 2.1f),
+        MOB_CANNON(0.0f, 0.0f),
+        ANYTHING_CANNON(0.0f, 0.0f);
         HUNTER(1.5f, 2.1f);
 
         public final float explosionPower;
@@ -77,6 +80,8 @@ public class RpgRocketEntity extends ThrownItemEntity {
     }
 
     @Override
+    protected double getGravity() {
+        return 0.0;
     protected float getGravity() {
         return 0.0f;
     }
