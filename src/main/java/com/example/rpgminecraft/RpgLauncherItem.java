@@ -12,8 +12,11 @@ import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
 
 public class RpgLauncherItem extends Item {
-    public RpgLauncherItem(Settings settings) {
+    private final RpgRocketEntity.RocketMode rocketMode;
+
+    public RpgLauncherItem(Settings settings, RpgRocketEntity.RocketMode rocketMode) {
         super(settings);
+        this.rocketMode = rocketMode;
     }
 
     @Override
@@ -21,8 +24,8 @@ public class RpgLauncherItem extends Item {
         ItemStack itemStack = user.getStackInHand(hand);
 
         if (!world.isClient) {
-            RpgRocketEntity rocket = new RpgRocketEntity(world, user);
-            rocket.setVelocity(user, user.getPitch(), user.getYaw(), 0.0f, 1.7f, 0.4f);
+            RpgRocketEntity rocket = new RpgRocketEntity(world, user, rocketMode);
+            rocket.setVelocity(user, user.getPitch(), user.getYaw(), 0.0f, rocketMode.velocity, 0.4f);
             world.spawnEntity(rocket);
         }
 

@@ -26,11 +26,13 @@ public class RpgMinecraftMod implements ModInitializer {
                     .build()
     );
 
-    public static final Item RPG_LAUNCHER = Registry.register(
-            Registries.ITEM,
-            Identifier.of(MOD_ID, "rpg_launcher"),
-            new RpgLauncherItem(new Item.Settings().maxCount(1))
-    );
+    public static final Item RPG_LAUNCHER = registerLauncher("rpg_launcher", RpgRocketEntity.RocketMode.STANDARD);
+    public static final Item NUKE_LAUNCHER = registerLauncher("nuke_launcher", RpgRocketEntity.RocketMode.NUKE);
+    public static final Item HUNTER_LAUNCHER = registerLauncher("hunter_launcher", RpgRocketEntity.RocketMode.HUNTER);
+
+    private static Item registerLauncher(String id, RpgRocketEntity.RocketMode mode) {
+        return Registry.register(Registries.ITEM, Identifier.of(MOD_ID, id), new RpgLauncherItem(new Item.Settings().maxCount(1), mode));
+    }
 
     @Override
     public void onInitialize() {

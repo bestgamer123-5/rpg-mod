@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "rpgminecraft:item/rpg_sword"
+  }
+}
