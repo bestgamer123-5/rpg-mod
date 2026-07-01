@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "ICI",
+    " R ",
+    " S "
+  ],
+  "key": {
+    "I": {"item": "minecraft:iron_ingot"},
+    "C": {"item": "minecraft:chest"},
+    "R": {"item": "rpgminecraft:rpg_launcher"},
+    "S": {"item": "minecraft:stick"}
+  },
+  "result": {"item": "rpgminecraft:anything_launcher"}
+}
